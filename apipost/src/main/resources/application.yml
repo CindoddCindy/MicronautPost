@@ -1,0 +1,27 @@
+#micronaut:
+  #application:
+    #name: apipost
+
+    
+
+micronaut:
+  application:
+    name: apipost
+  server:
+    port: 8000
+
+---
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:26257/cindy
+    driverClassName: org.postgresql.Driver
+    username: root
+    password: ''
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+
+

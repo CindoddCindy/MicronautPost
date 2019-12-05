@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: cindy.test
+---
+testFramework: junit
+sourceLanguage: java
