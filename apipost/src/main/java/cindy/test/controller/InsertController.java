@@ -15,24 +15,24 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.annotation.Put;
 import io.micronaut.http.annotation.QueryValue;
-import cindy.test.model.Post;
-import cindy.test.repository.PostRepositoryInterface;
+import cindy.test.model.Insert;
+import cindy.test.repository.InsertRepositoryInterface;
 
-@Controller("/post")
-public class PostController{
+@Controller("/insert")
+public class InsertController{
 
-    private PostRepositoryInterface repository;
+    private InsertRepositoryInterface repository;
     
-    PostController(PostRepositoryInterface r){
+    InsertController(InsertRepositoryInterface r){
         this.repository = r;
     }
 
     @Get(produces = MediaType.APPLICATION_JSON)
     public String index(@QueryValue int page, @QueryValue int limit) {
-        List<Post> post = repository.findAll(page, limit);
+        List<Insert> insert = repository.findAll(page, limit);
         HashMap<String, Object> data = new HashMap<>();
         data.put("page", Math.ceil(repository.size() / limit));
-        data.put("data", post);
+        data.put("data", insert);
         return (new Gson()).toJson(data);
     }
 
@@ -43,7 +43,7 @@ public class PostController{
     }
 
     @Post(consumes=MediaType.APPLICATION_FORM_URLENCODED)
-    public String save(@Body Post t) {
+    public String save(@Body Insert t) {
         HashMap<String, Object> data = new HashMap<>();
         if (repository.save(t)) {
             data.put("status", "ok");
@@ -54,7 +54,7 @@ public class PostController{
     }
 
     @Put(consumes=MediaType.APPLICATION_JSON)
-    public String update(@Body Post c) {
+    public String update(@Body Insert c) {
         HashMap<String, Object> data = new HashMap<>();
         if (repository.update(c.getId(), c.getName(), c.getEmail(), c.getPassword(), c.getData())) {
         // if (repository.updateCode(c.getId(), c.getCode())) {

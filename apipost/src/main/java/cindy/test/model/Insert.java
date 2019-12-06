@@ -16,8 +16,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "post")
-public class Post{
+@Table(name = "insert")
+public class Insert{
 
 
 
@@ -40,7 +40,7 @@ public class Post{
     @Column(name = "password")
     private String password;
 
-    @NotNull (message = "Post data Id Empty.")
+    @NotNull (message = " data Id Empty.")
     @Column(name = "data")
     private String data;
 
