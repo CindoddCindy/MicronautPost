@@ -42,7 +42,7 @@ public class InsertController{
         return (new Gson()).toJson(repository.findById(id));
     }
 
-    @Post(consumes=MediaType.APPLICATION_FORM_URLENCODED)
+    @Post(consumes=MediaType.APPLICATION_FORM_URLENCODED)//APPLICATION_JSON
     public String save(@Body Insert t) {
         HashMap<String, Object> data = new HashMap<>();
         if (repository.save(t)) {
